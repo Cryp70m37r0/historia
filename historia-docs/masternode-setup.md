@@ -6,12 +6,12 @@ Historia Masternode Setup
 Setting up a masternode requires a basic understanding of Linux and blockchain technology, as well as an ability to follow instructions closely. It also requires regular maintenance and careful security. There are some decisions to be made along the way, and optional extra steps to take for increased security.
 ### Before you begin ###
 
-Please update your wallet - https://github.com/HistoriaOffical/historia/releases/tag/0.16.2.0
+Please update your wallet - https://github.com/HistoriaOffical/historia/releases/tag/0.16.3.0
 
 This guide assumes you are setting up a single masternode for the first time. You will need:
 
 * 100 Historia
-* A wallet to store your Historia, masternodes MUST use 0.16.2.0
+* A wallet to store your Historia, masternodes MUST use 0.16.3.0
 * A Linux server, preferably a Virtual Private Server (VPS)
 
 
@@ -76,16 +76,16 @@ You should immediately change the root password and store it in a safe place for
 > passwd root
 
 
-Enter and confirm a new password (preferably long and randomly generated). Next we will create a new user with the following command, replacing <username> with a username of your choice:
+Enter and confirm a new password (preferably long and randomly generated). Next we will create a new user with the following command, replacing "nodeuser" with a username of your choice:
 
 
-> adduser <username>
+> adduser nodeuser
 
 
 You will be prompted for a password. Enter and confirm using a new password (different to your root password) and store it in a safe place. You will also see prompts for user information, but this can be left blank. Once the user has been created, we will add them to the sudo group so they can perform commands as root:
 
 
-> usermod -aG sudo <username>
+> usermod -aG sudo nodeuser
 
 
 Now, while still as root, we will update the system from the Ubuntu package repository:
@@ -144,7 +144,7 @@ PuTTY will disconnect when the server reboots.
 While this setup includes basic steps to protect your server against attacks, much more can be done. However, since the masternode does not actually store the keys to any Historia, these steps are considered beyond the scope of this guide.
 
 ### Send the collateral ###
-You MUST use Historia 0.16.2.0, otherwise this process will fail. https://github.com/HistoriaOffical/historia/releases/tag/0.16.2.0 
+You MUST use Historia 0.16.3.0, otherwise this process will fail. https://github.com/HistoriaOffical/historia/releases/tag/0.16.3.0 
 
 
 A Historia address with a single unspent transaction output (UTXO) of exactly 100 HISTORIA is required to operate a masternode. Once it has been sent, various keys regarding the transaction must be extracted for later entry in a configuration file as proof that the transaction was completed successfully. A masternode can only be started from a official Historia Core wallet at this time. This guide will describe the steps for Historia Core wallet.
@@ -172,7 +172,7 @@ Take note of the masternode private key and collateral address, since we will ne
 Now send exactly 100 HISTORIA in a single transaction to the account address you generated in the previous step. This may be sent from another wallet, or from funds already held in your current wallet. Once the transaction is complete, view the transaction in a blockchain explorer by searching for the address. You will need 15 confirmations before you can start the masternode, but you can continue with the next step at this point already: installing Historia Core on your VPS.
 ### Install Historia Core ###
 
-You MUST use Historia 0.16.2.0, otherwise this process will fail. https://github.com/HistoriaOffical/historia/releases/tag/0.16.2.0
+You MUST use Historia 0.16.3.0, otherwise this process will fail. https://github.com/HistoriaOffical/historia/releases/tag/0.16.3.0
 
 
 Historia Core is the software behind both the Historia Core GUI wallet and Historia masternodes. If not displaying a GUI, it runs as a daemon on your VPS (Historiad), controlled by a simple command interface (Historia-cli).
@@ -180,24 +180,24 @@ Open PuTTY or a console again and connect using the username and password you ju
 
 
 #### Manual installation ####
-To manually download and install the components of your Historia masternode, visit https://github.com/HistoriaOffical/historia/releases/tag/0.16.2.0 on your computer to find the link to the latest Historia Core wallet.  Right-click on Download TGZ for Historia Core Linux 64 Bit and select Copy link address. Go back to your terminal window and enter the following command, pasting in the address to the latest version of Historia Core by right clicking or pressing Ctrl + V:
+To manually download and install the components of your Historia masternode, visit https://github.com/HistoriaOffical/historia/releases/tag/0.16.3.0 on your computer to find the link to the latest Historia Core wallet.  Right-click on Download TGZ for Historia Core Linux 64 Bit and select Copy link address. Go back to your terminal window and enter the following command, pasting in the address to the latest version of Historia Core by right clicking or pressing Ctrl + V:
 
 > cd ~  
 > wget 
-https://github.com/HistoriaOffical/historia/releases/download/0.16.2.0/historiacore-0.16.2-linux64.tar.gz
+https://github.com/HistoriaOffical/historia/releases/download/0.16.3.0/historiacore-0.16.3-linux64.tar.gz
 
 
 Create a working directory for Historia, extract the compressed archive, copy the necessary files to the directory and set them as executable:
 > mkdir .historiacore  
-> tar xfvz historiacore-0.16.2-linux64.tar.gz  
-> cp historiacore-0.16.2/bin/historiad .historiacore/  
-> cp historiacore-0.16.2/bin/historia-cli .historiacore/  
+> tar xfvz historiacore-0.16.3-linux64.tar.gz  
+> cp historiacore-0.16.3/bin/historiad .historiacore/  
+> cp historiacore-0.16.3/bin/historia-cli .historiacore/  
 > chmod 777 .historiacore/historia*  
 
 
 Clean up unneeded files:
-> rm historiacore-0.16.2-linux64.tar.gz  
-> rm -r historiacore-0.16.2/
+> rm historiacore-0.16.3-linux64.tar.gz  
+> rm -r historiacore-0.16.3/
 
 
 Create a configuration file using the following command:
@@ -403,18 +403,18 @@ Download latest version of the linux binaries.
 
 > cd ~  
 > wget 
-https://github.com/HistoriaOffical/historia/releases/download/0.16.2.0/historiacore-0.16.2-linux64.tar.gz
+https://github.com/HistoriaOffical/historia/releases/download/0.16.3.0/historiacore-0.16.3-linux64.tar.gz
 
 Extract the compressed archive, copy the necessary files to the directory and set them as executable:
-> tar xfvz historiacore-0.16.2-linux64.tar.gz  
-> cp historiacore-0.16.2/bin/historiad .historiacore/  
-> cp historiacore-0.16.2/bin/historia-cli .historiacore/  
+> tar xfvz historiacore-0.16.3-linux64.tar.gz  
+> cp historiacore-0.16.3/bin/historiad .historiacore/  
+> cp historiacore-0.16.3/bin/historia-cli .historiacore/  
 > chmod 777 .historiacore/historia*
 
 
 Clean up unneeded files:
-> rm historiacore-0.16.2-linux64.tar.gz  
-> rm -r historiacore-0.16.2/
+> rm historiacore-0.16.3-linux64.tar.gz  
+> rm -r historiacore-0.16.3/
 
 
 ### IPFS ###
