@@ -76,10 +76,10 @@ You should immediately change the root password and store it in a safe place for
 > passwd root
 
 
-Enter and confirm a new password (preferably long and randomly generated). Next we will create a new user with the following command, replacing <username> with a username of your choice:
+Enter and confirm a new password (preferably long and randomly generated). Next we will create a new user with the following command, replacing "username" with a username of your choice (without the " "):
 
 
-> adduser <username>
+> adduser username
 
 
 You will be prompted for a password. Enter and confirm using a new password (different to your root password) and store it in a safe place. You will also see prompts for user information, but this can be left blank. Once the user has been created, we will add them to the sudo group so they can perform commands as root:
